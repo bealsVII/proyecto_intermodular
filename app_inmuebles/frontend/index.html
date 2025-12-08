@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InmoGestión - Venta y Alquiler</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <h1>🏠 InmoGestión</h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#destacados">Inmuebles</a></li>
+                <li><a href="#login" class="btn-login">Iniciar Sesión</a></li>
+                <li><a href="#panel" class="btn-panel">Mi Panel</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero-section">
+        <div class="hero-content">
+            <h2>Encuentra tu hogar ideal</h2>
+            <form class="search-bar">
+                <div class="form-group">
+                    <select name="tipo">
+                        <option value="">Tipo de Inmueble</option>
+                        <option value="piso">Piso</option>
+                        <option value="casa">Casa</option>
+                        <option value="chalet">Chalet</option>
+                        <option value="chalet">Parcela</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Ciudad (ej. Madrid)">
+                </div>
+                <div class="form-group">
+                    <input type="number" placeholder="Habitaciones">
+                </div>
+                <div class="form-group">
+                    <input type="number" placeholder="Precio Máx (€)">
+                </div>
+                <button type="submit" class="btn-search">Buscar</button>
+            </form>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="destacados" class="listings-section">
+            <h3 class="section-title">Inmuebles Destacados</h3>
+            
+            <div class="grid-inmuebles">
+                <article class="card">
+                    <div class="card-image">
+                        <img src="madrid.jpg" alt="Imagen Inmueble">
+                        <span class="tag">Venta</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>Ático en el Centro</h4>
+                        <p class="location">📍 Madrid, Centro</p>
+                        <p class="price">250.000 €</p>
+                        <div class="features">
+                            <span>🛏️ 3 Hab</span>
+                            <span>🚿 2 Baños</span>
+                            <span>📏 120m²</span>
+                        </div>
+                        <button class="btn-details">Ver Detalles</button>
+                        <ul class="detail-features-list">
+                        <li>✅ 3 Habitaciones</li>
+                        <li>✅ 2 Baños completos</li>
+                        <li>✅ Calefacción central</li>
+                        <li>✅ Ascensor</li>
+                    </ul>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-image">
+                        <img src="valencia.avif" alt="Imagen Inmueble">
+                        <span class="tag">Alquiler</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>Piso reformado</h4>
+                        <p class="location">📍 Valencia, Ruzafa</p>
+                        <p class="price">900 €/mes</p>
+                        <div class="features">
+                            <span>🛏️ 2 Hab</span>
+                            <span>🚿 1 Baño</span>
+                            <span>📏 75m²</span>
+                        </div>
+                        <button class="btn-details">Ver Detalles</button>
+                        <ul class="detail-features-list">
+                        <li>✅ 2 Habitaciones</li>
+                        <li>✅ 1 Baño completo</li>
+                        <li>✅ Puerta de seguridad</li>
+                        <li>✅ Sin ascensor</li>
+                    </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="detalle" class="detail-section">
+            <div class="detail-container">
+                <div class="detail-gallery">
+                    <img src="atico.avif" alt="Foto principal">
+                </div>
+                <div class="detail-info">
+                    <h2>Ático en el Centro de Madrid</h2>
+                    <p class="detail-price">250.000 €</p>
+                    <p class="detail-desc">
+                        Descripción completa del inmueble. Luminoso ático con terraza de 30m2, 
+                        reformado recientemente. Ideal para familias.
+                    </p>
+                    <ul class="detail-features-list">
+                        <li>✅ 2 Habitaciones</li>
+                        <li>✅ 1 Baño completo</li>
+                        <li>✅ Plaza parking</li>
+                        <li>✅ Ascensor</li>
+                    </ul>
+                    
+                    <div class="action-buttons">
+                        <button class="btn-primary">✉ Contactar con Vendedor</button>
+                        <button class="btn-secondary">❤ Guardar en Favoritos</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="login" class="auth-section">
+            <div class="auth-card">
+                <h3>Bienvenido de nuevo</h3>
+                <form>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Contraseña" required>
+                    <button type="submit" class="btn-primary width-100">Entrar</button>
+                    <p class="auth-links">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                        <span> | </span>
+                        <a href="#">Crear cuenta</a>
+                    </p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="/src/main.jsx"></script>
+
+    <footer>
+        <p>&copy; 2025 InmoGestión</p>
+    </footer>
+</body>
+</html>
