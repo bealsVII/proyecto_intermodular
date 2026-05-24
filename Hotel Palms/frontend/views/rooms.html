@@ -1,0 +1,126 @@
+<div class="row mb-4">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+        <div>
+            <h1><i class="bi bi-door-open me-2"></i>Habitaciones</h1>
+            <p class="text-muted mb-0">Gestionar las habitaciones del hotel y su disponibilidad</p>
+        </div>
+        <button class="btn btn-primary admin-only" id="addRoomBtn" style="display:none;">
+            <i class="bi bi-plus-circle me-2"></i>Agregar habitación
+        </button>
+    </div>
+</div>
+
+<!-- Filtros -->
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-body">
+        <form id="roomFilters" class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label small text-muted">Buscar</label>
+                <input type="text" class="form-control" id="filterSearch"
+                       placeholder="Room number or description...">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label small text-muted">Tipo de habitación</label>
+                <select class="form-select" id="filterType">
+                    <option value="">Todos los tipos</option>
+                    <option value="single">Individual</option>
+                    <option value="double">Doble</option>
+                    <option value="triple">Triple</option>
+                    <option value="suite">Suite</option>
+                    <option value="family">Familiar</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label small text-muted">Precio mínimo</label>
+                <input type="number" class="form-control" id="filterMinPrice"
+                       placeholder="Min €" min="0" step="0.01">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label small text-muted">Precio máximo</label>
+                <input type="number" class="form-control" id="filterMaxPrice"
+                       placeholder="Max €" min="0" step="0.01">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label small text-muted">Capacidad</label>
+                <select class="form-select" id="filterCapacity">
+                    <option value="">Todo</option>
+                    <option value="1">1+ invitados</option>
+                    <option value="2">2+ invitados</option>
+                    <option value="3">3+ invitados</option>
+                    <option value="4">4+ invitados</option>
+                </select>
+            </div>
+            <div class="col-md-1 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Cuadrícula de habitaciones -->
+<div class="row g-4" id="roomsGrid">
+    <!-- Las habitaciones se cargan dinámicamente -->
+</div>
+
+<!-- Paginación -->
+<nav class="mt-4" id="roomsPagination"></nav>
+
+<!-- Modal de habitación (Agregar/Editar) -->
+<div class="modal fade" id="roomModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="roomModalTitle">Agregar habitación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="roomForm" novalidate>
+                    <input type="hidden" id="roomId">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Número de habitación</label>
+                            <input type="text" class="form-control" id="roomNumber" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Tipo de habitación</label>
+                            <select class="form-select" id="roomType" required>
+                                <option value="">Select type</option>
+                                <option value="single">Individual</option>
+                                <option value="double">Doble</option>
+                                <option value="triple">Triple</option>
+                                <option value="suite">Suite</option>
+                                <option value="family">Familiar</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Precio/Noche (€)</label>
+                            <input type="number" class="form-control" id="roomPrice"
+                                   required min="0" step="0.01">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Capacidad</label>
+                            <input type="number" class="form-control" id="roomCapacity"
+                                   required min="1" value="1">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Planta</label>
+                            <input type="number" class="form-control" id="roomFloor" min="1">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        <textarea class="form-control" id="roomDescription" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="saveRoomBtn">Guardar habitación</button>
+            </div>
+        </div>
+    </div>
+</div>

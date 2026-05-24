@@ -1,0 +1,15 @@
+{
+    "success": true,
+    "data": {
+        "message": "Login successful",
+        "user": {
+            "id": 1,
+            "first_name": "Admin",
+            "last_name": "System",
+            "email": "admin@hotel.com",
+            "role": "admin"
+        },
+        "token": "abc123..."
+    },
+    "timestamp": "2025-01-15T10:30:00+01:00"
+}

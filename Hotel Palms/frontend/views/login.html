@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso - Hotel Palms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="bg-light">
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-md-5 col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <!-- Logotipo / Encabezado -->
+                        <div class="text-center mb-4">
+                            <i class="bi bi-building text-primary" style="font-size: 3rem;"></i>
+                            <h3 class="mt-2">Hotel Palms</h3>
+                            <p class="text-muted">Inicia sesión en tu cuenta</p>
+                        </div>
+
+                        <!-- Formulario de inicio de sesión -->
+                        <form id="loginForm" novalidate>
+                            <!-- Campo de email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">
+                                    <i class="bi bi-envelope me-1"></i>Email
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-at"></i></span>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                           placeholder="admin@hotel.com" required
+                                           autocomplete="email">
+                                </div>
+                                <div class="invalid-feedback" id="emailError"></div>
+                            </div>
+
+                            <!-- Campo de contraseña -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">
+                                    <i class="bi bi-lock me-1"></i>Contraseña
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-key"></i></span>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                           placeholder="Enter your password" required
+                                           minlength="8" autocomplete="current-password">
+                                    <button class="btn btn-outline-secondary" type="button"
+                                            id="togglePassword" title="Toggle visibility">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="invalid-feedback" id="passwordError"></div>
+                            </div>
+
+                            <!-- Recuérdame -->
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Recuérdame</label>
+                            </div>
+
+                            <!-- Botón Enviar -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg" id="loginBtn">
+                                    <span class="spinner-border spinner-border-sm d-none" id="loginSpinner"></span>
+                                    <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar sesión
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Enlace de registro -->
+                        <div class="text-center mt-3">
+                            <p class="mb-0">¿No tienes una cuenta?
+                                <a href="?page=register">Regístrate aquí</a>
+                            </p>
+                        </div>
+
+                        <!-- Credenciales de demostración -->
+                        <div class="mt-4 p-3 bg-light rounded">
+                            <small class="text-muted">
+                                <strong>Credenciales de demostración:</strong><br>
+                                Administrador: admin@hotel.com / admin123<br>
+                                Invitado: juan@email.com / admin123
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/notifications.js"></script>
+    <script src="../js/validations.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        // Controlador de formulario de inicio de sesión.
+        document.getElementById('loginForm').addEventListener('submit', handleLogin);
+
+        // Mostrar/ocultar la contraseña.
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.replace('bi-eye', 'bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.replace('bi-eye-slash', 'bi-eye');
+            }
+        });
+
+        // Validación en tiempo real.
+        document.getElementById('email').addEventListener('blur', function() {
+            validateEmail(this.value, 'emailError');
+        });
+        document.getElementById('password').addEventListener('blur', function() {
+            validatePassword(this.value, 'passwordError', false);
+        });
+    </script>
+</body>
+</html>
